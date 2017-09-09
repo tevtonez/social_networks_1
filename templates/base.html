@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Social Network</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400i,700,700i|Source+Sans+Pro:300,300i,400,400i,700,700i" rel="stylesheet">
+
+  <!-- master css -->
+  <link rel="stylesheet" href="{% static 'simplesocial/css/master.css' %}">
+
+</head>
+<body>
+
+  <nav class="navbar mynav" role='navigation' id="navbar">
+    <div class="container">
+      <a class="navbar-brand mynav" href="{% url 'home' %}">Start Social</a>
+
+      <ul class="nav navbar-nav navbar-nav">
+        {% if user.is_authenticated %}
+          <li><a href="#">Post</a></li>
+          <li><a href="#">Your Groups</a></li>
+          <li><a href="#">Create Group</a></li>
+          <li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
+        {% else %}
+          <li><a href="#">Groups</a></li>
+          <li><a href="{% url 'accounts:login' %}">Log In</a></li>
+          <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+        {% endif %}
+      </ul>
+
+    </div>
+  </nav>
+
+  <div class="container">
+    {% block content %}
+
+    {% endblock %}
+  </div>
+</body>
+</html>
