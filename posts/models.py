@@ -1,4 +1,4 @@
-f# POSTS MODELS
+# POSTS MODELS
 
 from django.db import models
 from django.urls import reverse
@@ -13,11 +13,11 @@ User = get_user_model()
 
 
 class Post(models.Model):
-  user = models.FroeignKey(User, related_name='posts')
+  user = models.ForeignKey(User, related_name='posts')
   created_at = models.DateTimeField(auto_now=True)
   message = models.TextField()
   message_html = models.TextField(editable=False)
-  group = models.FroeignKey(Group, related_name='posts', null=True, blank=True)
+  group = models.ForeignKey(Group, related_name='posts', null=True, blank=True)
 
   def __str__(self):
     return self.message

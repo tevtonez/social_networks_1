@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.mixins LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib import messages
 from django.urls import reverse
 from django.views import generic
 from .models import Group, GroupMember
+from . import models
 
 
 class CreateGroup(LoginRequiredMixin, generic.CreateView):
@@ -15,7 +16,7 @@ class SingleGroup(generic.DetailView):
   model = Group
 
 
-class ListGroup(generic.ListlView):
+class ListGroup(generic.ListView):
   model = Group
 
 

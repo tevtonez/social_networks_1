@@ -3,7 +3,7 @@
 
 {% block post_content %}
   <h3>Create New Post</h3>
-  <form action="{% url 'post:create' %}" method="post" id="postForm">
+  <form action="{% url 'posts:create' %}" method="post" id="postForm">
     {% csrf_token %}
     {% bootstrap_form form %}
     <input class="btn btn-primary btn-large" type="submit" value="Post">
